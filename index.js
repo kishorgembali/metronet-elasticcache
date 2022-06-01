@@ -47,7 +47,7 @@ async function cache(req, res, next) {
 
 const deleteCache = (req, res) => {
   client.del('products');
-  res.send('<h2>Successfully deleted cache!!</h2>');
+  res.send('<h2>Successfully deleted cache for metrocache!!</h2>');
 };
 
 app.get('/api/remove', deleteCache);
