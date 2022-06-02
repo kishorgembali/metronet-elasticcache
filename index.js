@@ -27,6 +27,7 @@ client.on("error", function () {
 const delay = (time) => new Promise((res) => setTimeout(res, time));
 
 async function getProducts(req, res, next) {
+  console.log("Fetching data from Get Products API");
   client.set('products', JSON.stringify(products));
   await delay(5000);
 
@@ -36,9 +37,11 @@ async function getProducts(req, res, next) {
 
 // Cache middleware
 async function cache(req, res, next) {
+  console.log("Fetching data from Caches");
   const data = await client.get("products");
-
+ 
   if (data !== null) {
+    console.log(data);
     res.send(JSON.parse(data));
   } else {
     next();
